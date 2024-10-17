@@ -29,8 +29,8 @@ const CountChart = ({ students }: CountChartProps) => {
       <div className="relative w-full h-[75%]">
         <ResponsiveContainer>
           <RadialBarChart
-            cx={`${boysPercentage.toString() + "%"}`}
-            cy={`${girlsPercentage.toString() + "%"}`}
+            cx="50%"
+            cy="50%"
             innerRadius="40%"
             outerRadius="100%"
             barSize={32}
