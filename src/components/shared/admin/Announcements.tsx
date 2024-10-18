@@ -1,25 +1,51 @@
-"use client"
+"use client";
+import React, { useState } from "react";
 
-type AnnouncementsType =  {
+type AnnouncementsType = {
   id: number;
   title: string;
   message: string;
   date: string;
-}
+};
 
 interface AnnouncementsProps {
-  announcements:AnnouncementsType[]
+  announcements: AnnouncementsType[];
 }
 
-const Announcements = ({announcements}:AnnouncementsProps) => {
+const Announcements = ({ announcements }: AnnouncementsProps) => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const announcementsPerPage = 3;
+
+  // Calcular los índices de los anuncios a mostrar
+  const indexOfLastAnnouncement = currentPage * announcementsPerPage;
+  const indexOfFirstAnnouncement = indexOfLastAnnouncement - announcementsPerPage;
+  const currentAnnouncements = announcements.slice(indexOfFirstAnnouncement, indexOfLastAnnouncement);
+
+  // Calcular el número total de páginas
+  const totalPages = Math.ceil(announcements.length / announcementsPerPage);
+
+  const handleNextPage = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage((prev) => prev + 1);
+    }
+  };
+
+  const handlePreviousPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage((prev) => prev - 1);
+    }
+  };
+
   return (
-    <article className="bg-white p-4 rounded-md">
+    <article className="bg-white p-4 rounded-md min-h-[480px]">
       <section className="flex items-center justify-between">
         <h1 className="text-xl font-semibold">Announcements</h1>
-        <button className="text-xs text-gray-800 font-semibold hover:text-gray-50 bg-sky-200 hover:bg-sky-500 rounded-lg py-1 px-2 transition-colors duration-200 ease-linear">View All</button>
+        <button className="text-xs text-gray-800 font-semibold hover:text-gray-50 bg-sky-200 hover:bg-sky-500 rounded-lg py-1 px-2 transition-colors duration-200 ease-linear">
+          View All
+        </button>
       </section>
-      <section className="flex flex-col gap-4 mt-4">
-        {announcements && announcements.map((announcement)=>(
+      <section className="flex flex-col gap-4 mt-4 min-h-[350px]">
+        {currentAnnouncements.map((announcement) => (
           <article className="bg-lamaSkyLight rounded-md p-4 cursor-default" key={announcement.id}>
             <div className="flex items-center justify-between">
               <h2 className="font-medium">{announcement.title}</h2>
@@ -28,6 +54,25 @@ const Announcements = ({announcements}:AnnouncementsProps) => {
             <p className="text-sm text-gray-400 mt-1">{announcement.message}</p>
           </article>
         ))}
+      </section>
+      <section className="flex justify-between mt-4">
+        <button
+          onClick={handlePreviousPage}
+          disabled={currentPage === 1}
+          className="cursor-pointer text-xs text-gray-800 font-semibold hover:text-gray-50 bg-sky-200 hover:bg-sky-500 rounded-lg py-1 px-2 transition-colors duration-200 ease-linear"
+        >
+          Previous
+        </button>
+        <span className="text-xs text-gray-600">
+          Page {currentPage} of {totalPages}
+        </span>
+        <button
+          onClick={handleNextPage}
+          disabled={currentPage === totalPages}
+          className="cursor-pointer text-xs text-gray-800 font-semibold hover:text-gray-50 bg-sky-200 hover:bg-sky-500 rounded-lg py-1 px-2 transition-colors duration-200 ease-linear"
+        >
+          Next
+        </button>
       </section>
     </article>
   );
