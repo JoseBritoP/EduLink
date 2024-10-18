@@ -26,12 +26,10 @@ const EventCalendar = ({ events }: EventCalendarProps) => {
   const [currentPage, setCurrentPage] = useState(1);
   const eventsPerPage = 3;
 
-  // Calcular los índices de los eventos a mostrar
   const indexOfLastEvent = currentPage * eventsPerPage;
   const indexOfFirstEvent = indexOfLastEvent - eventsPerPage;
   const currentEvents = events.slice(indexOfFirstEvent, indexOfLastEvent);
 
-  // Calcular el número total de páginas
   const totalPages = Math.ceil(events.length / eventsPerPage);
 
   const handleNextPage = () => {

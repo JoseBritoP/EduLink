@@ -17,7 +17,6 @@ const Announcements = ({ announcements }: AnnouncementsProps) => {
   const [currentPage, setCurrentPage] = useState(1);
   const announcementsPerPage = 3;
 
-  // Calcular los índices de los anuncios a mostrar
   const indexOfLastAnnouncement = currentPage * announcementsPerPage;
   const indexOfFirstAnnouncement =
     indexOfLastAnnouncement - announcementsPerPage;
@@ -26,7 +25,6 @@ const Announcements = ({ announcements }: AnnouncementsProps) => {
     indexOfLastAnnouncement
   );
 
-  // Calcular el número total de páginas
   const totalPages = Math.ceil(announcements.length / announcementsPerPage);
 
   const handleNextPage = () => {
