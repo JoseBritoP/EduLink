@@ -9,29 +9,18 @@ type ValuePiece = Date | null;
 
 type Value = ValuePiece | [ValuePiece, ValuePiece];
 
-// TEMPORARY
-const events = [
-  {
-    id: 1,
-    title: "Lorem ipsum dolor",
-    time: "12:00 PM - 2:00 PM",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-  },
-  {
-    id: 2,
-    title: "Lorem ipsum dolor",
-    time: "12:00 PM - 2:00 PM",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-  },
-  {
-    id: 3,
-    title: "Lorem ipsum dolor",
-    time: "12:00 PM - 2:00 PM",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-  },
-];
+type EventType = {
+  id: number;
+  title: string;
+  time:  string;
+  description:string
+};
 
-const EventCalendar = () => {
+interface EventCalendarProps {
+  events:EventType[]
+}
+
+const EventCalendar = ({events}:EventCalendarProps) => {
   const [value, onChange] = useState<Value>(new Date());
 
   return (
@@ -49,7 +38,9 @@ const EventCalendar = () => {
           >
             <div className="flex items-center justify-between">
               <h1 className="font-semibold text-gray-600">{event.title}</h1>
-              <span className="text-gray-400 font-semibold text-xs">{event.time}</span>
+              <span className="text-gray-400 font-semibold text-xs">
+                {event.time}
+              </span>
             </div>
             <p className="mt-2 text-gray-700 text-sm">{event.description}</p>
           </div>

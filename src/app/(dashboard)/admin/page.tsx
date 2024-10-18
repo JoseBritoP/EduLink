@@ -9,6 +9,7 @@ import {
 } from "@/components/shared/admin";
 
 export default function AdminPage() {
+  
   const studentsCount = [
     {
       label: "Total",
@@ -145,6 +146,78 @@ export default function AdminPage() {
     },
   ];
 
+  const events = [
+    {
+      id: 1,
+      title: "Lorem ipsum dolor",
+      time: "12:00 PM - 2:00 PM",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    },
+    {
+      id: 2,
+      title: "Lorem ipsum dolor",
+      time: "12:00 PM - 2:00 PM",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    },
+    {
+      id: 3,
+      title: "Lorem ipsum dolor",
+      time: "12:00 PM - 2:00 PM",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    },
+  ];
+
+  const announcements = [
+    {
+        id: 1,
+        title: "Start of the School Year",
+        message: "We welcome everyone to a new school year. We hope you are all ready to learn and grow together!",
+        date: "2024-08-01"
+    },
+    {
+        id: 2,
+        title: "Parent Meeting",
+        message: "A reminder to parents that the annual meeting will take place on September 15th at 6:00 PM in the auditorium.",
+        date: "2024-09-01"
+    },
+    {
+        id: 3,
+        title: "Cultural Day",
+        message: "On October 20th, we will celebrate Cultural Day. We invite everyone to participate with their traditions and foods.",
+        date: "2024-10-01"
+    },
+    {
+        id: 4,
+        title: "Final Exams",
+        message: "Final exams will be held from December 10th to 15th. Make sure to review and be prepared.",
+        date: "2024-11-01"
+    },
+    {
+        id: 5,
+        title: "Summer Vacation",
+        message: "Summer vacation will begin on December 20th. Enjoy your break!",
+        date: "2024-12-01"
+    },
+    {
+        id: 6,
+        title: "Food Drive Campaign",
+        message: "We are organizing a food drive from November 1st to 15th. We appreciate your support!",
+        date: "2024-10-15"
+    },
+    {
+        id: 7,
+        title: "Extracurricular Workshops",
+        message: "We are opening registrations for extracurricular workshops. Visit our website for more information.",
+        date: "2024-09-10"
+    },
+    {
+        id: 8,
+        title: "Vocational Guidance Talk",
+        message: "On November 5th, there will be a talk on vocational guidance for high school students.",
+        date: "2024-10-05"
+    }
+  ]
+
   return (
     <main className="p-4 flex gap-4 flex-col md:flex-row">
       {/* LEFT */}
@@ -172,8 +245,8 @@ export default function AdminPage() {
       </section>
       {/* RIGHT */}
       <section className="w-full lg:w-1/3 flex flex-col gap-8">
-        <EventCalendar />
-        <Announcements />
+        <EventCalendar events ={events}/>
+        <Announcements announcements={announcements}/>
       </section>
     </main>
   );
