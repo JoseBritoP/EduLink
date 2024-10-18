@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useState } from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
+import Pagination from "../Pagination";
 
 type ValuePiece = Date | null;
 
@@ -12,16 +13,38 @@ type Value = ValuePiece | [ValuePiece, ValuePiece];
 type EventType = {
   id: number;
   title: string;
-  time:  string;
-  description:string
+  time: string;
+  description: string;
 };
 
 interface EventCalendarProps {
-  events:EventType[]
+  events: EventType[];
 }
 
-const EventCalendar = ({events}:EventCalendarProps) => {
+const EventCalendar = ({ events }: EventCalendarProps) => {
   const [value, onChange] = useState<Value>(new Date());
+  const [currentPage, setCurrentPage] = useState(1);
+  const eventsPerPage = 3;
+
+  // Calcular los índices de los eventos a mostrar
+  const indexOfLastEvent = currentPage * eventsPerPage;
+  const indexOfFirstEvent = indexOfLastEvent - eventsPerPage;
+  const currentEvents = events.slice(indexOfFirstEvent, indexOfLastEvent);
+
+  // Calcular el número total de páginas
+  const totalPages = Math.ceil(events.length / eventsPerPage);
+
+  const handleNextPage = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage((prev) => prev + 1);
+    }
+  };
+
+  const handlePreviousPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage((prev) => prev - 1);
+    }
+  };
 
   return (
     <div className="bg-white p-4 rounded-md">
@@ -31,7 +54,7 @@ const EventCalendar = ({events}:EventCalendarProps) => {
         <Image src="/moreDark.png" alt="" width={20} height={20} />
       </div>
       <div className="flex flex-col gap-4">
-        {events.map((event) => (
+        {currentEvents.map((event) => (
           <div
             className="p-5 rounded-md border-2 border-gray-100 border-t-4 odd:border-t-lamaSky even:border-t-lamaPurple"
             key={event.id}
@@ -46,6 +69,12 @@ const EventCalendar = ({events}:EventCalendarProps) => {
           </div>
         ))}
       </div>
+      <Pagination
+        currentPage={currentPage}
+        handleNextPage={handleNextPage}
+        handlePreviousPage={handlePreviousPage}
+        totalPages={totalPages}
+      />
     </div>
   );
 };

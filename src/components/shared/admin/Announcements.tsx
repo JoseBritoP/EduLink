@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import Pagination from "../Pagination";
 
 type AnnouncementsType = {
   id: number;
@@ -18,8 +19,12 @@ const Announcements = ({ announcements }: AnnouncementsProps) => {
 
   // Calcular los índices de los anuncios a mostrar
   const indexOfLastAnnouncement = currentPage * announcementsPerPage;
-  const indexOfFirstAnnouncement = indexOfLastAnnouncement - announcementsPerPage;
-  const currentAnnouncements = announcements.slice(indexOfFirstAnnouncement, indexOfLastAnnouncement);
+  const indexOfFirstAnnouncement =
+    indexOfLastAnnouncement - announcementsPerPage;
+  const currentAnnouncements = announcements.slice(
+    indexOfFirstAnnouncement,
+    indexOfLastAnnouncement
+  );
 
   // Calcular el número total de páginas
   const totalPages = Math.ceil(announcements.length / announcementsPerPage);
@@ -46,34 +51,26 @@ const Announcements = ({ announcements }: AnnouncementsProps) => {
       </section>
       <section className="flex flex-col gap-4 mt-4 min-h-[350px]">
         {currentAnnouncements.map((announcement) => (
-          <article className="bg-lamaSkyLight rounded-md p-4 cursor-default" key={announcement.id}>
+          <article
+            className="bg-lamaSkyLight rounded-md p-4 cursor-default"
+            key={announcement.id}
+          >
             <div className="flex items-center justify-between">
               <h2 className="font-medium">{announcement.title}</h2>
-              <span className="text-xs text-gray-400 bg-white rounded-md px-1 py-1">{announcement.date}</span>
+              <span className="text-xs text-gray-400 bg-white rounded-md px-1 py-1">
+                {announcement.date}
+              </span>
             </div>
             <p className="text-sm text-gray-400 mt-1">{announcement.message}</p>
           </article>
         ))}
       </section>
-      <section className="flex justify-between mt-4">
-        <button
-          onClick={handlePreviousPage}
-          disabled={currentPage === 1}
-          className="cursor-pointer text-xs text-gray-800 font-semibold hover:text-gray-50 bg-sky-200 hover:bg-sky-500 rounded-lg py-1 px-2 transition-colors duration-200 ease-linear"
-        >
-          Previous
-        </button>
-        <span className="text-xs text-gray-600">
-          Page {currentPage} of {totalPages}
-        </span>
-        <button
-          onClick={handleNextPage}
-          disabled={currentPage === totalPages}
-          className="cursor-pointer text-xs text-gray-800 font-semibold hover:text-gray-50 bg-sky-200 hover:bg-sky-500 rounded-lg py-1 px-2 transition-colors duration-200 ease-linear"
-        >
-          Next
-        </button>
-      </section>
+      <Pagination
+        currentPage={currentPage}
+        handleNextPage={handleNextPage}
+        handlePreviousPage={handlePreviousPage}
+        totalPages={totalPages}
+      />
     </article>
   );
 };
