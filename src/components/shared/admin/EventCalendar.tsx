@@ -13,7 +13,7 @@ type Value = ValuePiece | [ValuePiece, ValuePiece];
 type EventType = {
   id: number;
   title: string;
-  time: string;
+  date: string;
   description: string;
 };
 
@@ -60,7 +60,7 @@ const EventCalendar = ({ events }: EventCalendarProps) => {
             <div className="flex items-center justify-between">
               <h1 className="font-semibold text-gray-600">{event.title}</h1>
               <span className="text-gray-400 font-semibold text-xs">
-                {event.time}
+                {event.date}
               </span>
             </div>
             <p className="mt-2 text-gray-700 text-sm">{event.description}</p>
