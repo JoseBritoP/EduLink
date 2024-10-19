@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { Calendar, momentLocalizer, View, Views, Formats } from "react-big-calendar";
+import { Calendar, momentLocalizer, View, Views } from "react-big-calendar";
 import moment from "moment";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 
@@ -19,22 +19,22 @@ const localizer = momentLocalizer(moment);
 const BigCalendar = ({calendarEvents}:BigCalendarProps) => {
   // TODO:change calendarEvent events with moment and display events
  const [view, setView] = useState<View>(Views.WORK_WEEK);
-  const [is24HourFormat, setIs24HourFormat] = useState<boolean>(true); 
+  // const [is24HourFormat, setIs24HourFormat] = useState<boolean>(true); 
 
   const handleOnChangeView = (selectedView: View) => {
     setView(selectedView);
   };
 
   // Función que devuelve el formato de hora según el estado
-  const timeFormat = is24HourFormat ? 'HH:mm' : 'hh:mm A';
+  // const timeFormat = is24HourFormat ? 'HH:mm' : 'hh:mm A';
 
-  const formats = {
-    timeGutterFormat: (date:Date) => moment(date).format(timeFormat),
-    eventTimeRangeFormat: ({ start, end }:{start:any,end:any}) => ({
-      start: moment(start).format(timeFormat),
-      end: moment(end).format(timeFormat),
-    }),
-  };
+  // const formats = {
+  //   timeGutterFormat: (date:Date) => moment(date).format(timeFormat),
+  //   eventTimeRangeFormat: ({ start, end }:{start:any,end:any}) => ({
+  //     start: moment(start).format(timeFormat),
+  //     end: moment(end).format(timeFormat),
+  //   }),
+  // };
 
   return (
     <Calendar
@@ -48,7 +48,7 @@ const BigCalendar = ({calendarEvents}:BigCalendarProps) => {
       onView={handleOnChangeView}
       min={new Date(2025, 1, 0, 8, 0, 0)}
       max={new Date(2025, 1, 0, 17, 0, 0)}
-      formats={formats}
+      // formats={formats}
     />
   );
 };
