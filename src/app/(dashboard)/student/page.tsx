@@ -1,11 +1,13 @@
 import { AnnouncementsStudent, BigCalendar, EventCalendarStudent } from '@/components/shared/student';
 import { announcementsData, calendarEvents, classesData, eventsData, examsData, lessonsData, resultsData, subjectsData } from '@/lib/data';
+import { StudentType } from '@/typescript/types';
 import React from 'react'
 
 export default function StudentPage() {
 
-  const student = {
+  const student:StudentType = {
     id:1,
+    studentId:'',
     name:"",
     lastName:"",
     schedule:'4A',
@@ -13,10 +15,10 @@ export default function StudentPage() {
     examsProgram:examsData,
     events:eventsData,
     calendar:calendarEvents,
-    examScore:resultsData,
+    exams:resultsData,
     lessons:lessonsData,
     classes:classesData,
-    subjets:subjectsData,
+    subjects:subjectsData,
   };
 
   return (
