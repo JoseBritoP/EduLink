@@ -1,10 +1,10 @@
-import { Colums, TeacherType } from "@/typescript/types";
+import { ColumsType, StudentListType, TeacherType } from "@/typescript/types";
 import React from "react";
 
 interface TableProps {
-  columns: Colums;
-  renderRow:  (item: TeacherType) => JSX.Element;
-  data: TeacherType[];
+  columns: ColumsType;
+  renderRow:  (item: TeacherType | StudentListType) => JSX.Element;
+  data: TeacherType[] | StudentListType[]
 }
 export default function Table({ columns, data, renderRow }: TableProps) {
   return (
