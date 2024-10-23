@@ -7,10 +7,12 @@ import Pagination from "../Pagination";
 
 interface ListTablerProps {
   columns: ColumsType;
-  renderRow:  (item: StudentListType | TeacherType) => JSX.Element;
+  type: 'teacher' | 'student'
   data: StudentListType[] | TeacherType[];
 }
-export default function ListTableData({columns,renderRow,data}:ListTablerProps) {
+
+
+export default function ListTableData({columns, data, type}:ListTablerProps) {
   
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -39,7 +41,7 @@ export default function ListTableData({columns,renderRow,data}:ListTablerProps) 
 
   return (
     <>
-      <Table columns={columns} renderRow={renderRow} data={currentData} />
+      <Table columns={columns} data={currentData} type={type} />
       <Pagination
         currentPage={currentPage}
         handleNextPage={handleNextPage}
