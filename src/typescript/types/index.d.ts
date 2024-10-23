@@ -1,3 +1,4 @@
+// TODO: union types for db
 // Data
 export type TeacherType = {
   id: number;
@@ -28,7 +29,17 @@ export type StudentType = {
 }
 
 // Student props
-
+export type StudentListType = {
+  id: number;
+  studentId: string;
+  name: string;
+  email?: string;
+  photo: string;
+  phone?: string;
+  grade: number;
+  class: string;
+  address: string;
+};
 export type SubjectsType = {
   id: number;
   name: string;
@@ -92,8 +103,12 @@ export type StudentEvent =  {
 }[]
 // List
 
-export type Colums = {
+export type ColumsType =({
   header: string;
   accessor: string;
-  className?: string | undefined;
-}[]
+  className?: undefined;
+} | {
+  header: string;
+  accessor: string;
+  className: string;
+})[]
