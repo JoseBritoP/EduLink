@@ -1,11 +1,11 @@
-import { ColumsType, StudentListType, TeacherType } from "@/typescript/types";
+import { ColumsType, Parent, StudentListType, TeacherType } from "@/typescript/types";
 import React from "react";
 import RenderRow from "./RenderRow";
 
 interface TableProps {
   columns: ColumsType;
-  data: TeacherType[] | StudentListType[]
-  type: 'student' | 'teacher'
+  data: TeacherType[] | StudentListType[] | Parent[]
+  type: "teacher" | "student" | "parent" | "subject" | "class" | "lesson" | "exam" | "assignment" | "result" | "attendance" | "event" | "announcement";
 }
 export default function Table({ columns, data, type }: TableProps) {
   return (
