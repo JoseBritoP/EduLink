@@ -2,13 +2,13 @@
 
 import React, { useState } from "react";
 import Table from "./Table";
-import { ColumsType, StudentListType, TeacherType } from "@/typescript/types";
+import { ColumsType, Parent, StudentListType, TeacherType } from "@/typescript/types";
 import Pagination from "../Pagination";
 
 interface ListTablerProps {
   columns: ColumsType;
-  type: 'teacher' | 'student'
-  data: StudentListType[] | TeacherType[];
+  type: "teacher" | "student" | "parent" | "subject" | "class" | "lesson" | "exam" | "assignment" | "result" | "attendance" | "event" | "announcement";
+  data: StudentListType[] | TeacherType[] | Parent[];
 }
 
 
