@@ -103,6 +103,15 @@ export type StudentEvent =  {
 }[]
 // List
 
+export type ColumnType = {
+  header: string;
+  accessor: string;
+  className?: undefined;
+} | {
+  header: string;
+  accessor: string;
+  className: string;
+}
 
 export type ColumsType =({
   header: string;
