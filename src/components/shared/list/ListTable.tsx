@@ -1,18 +1,12 @@
 "use client"
 
 import React, { useState } from "react";
-import Table from "./Table";
-import { ColumsType, Parent, StudentListType, TeacherType } from "@/typescript/types";
+import Table, { ListTableAndTableProps } from "./Table";
 import Pagination from "../Pagination";
 
-interface ListTablerProps {
-  columns: ColumsType;
-  type: "teacher" | "student" | "parent" | "subject" | "class" | "lesson" | "exam" | "assignment" | "result" | "attendance" | "event" | "announcement";
-  data: StudentListType[] | TeacherType[] | Parent[];
-}
 
 
-export default function ListTableData({columns, data, type}:ListTablerProps) {
+export default function ListTableData({columns, data, type}:ListTableAndTableProps) {
   
   const [currentPage, setCurrentPage] = useState(1);
 
