@@ -193,5 +193,5 @@ export type Result = {
 export type Subject = {
   id: number;
   name: string;
-  teachers: TeacherType[];
+  teachers: string[];
 }; 
