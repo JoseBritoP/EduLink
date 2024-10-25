@@ -103,6 +103,7 @@ export type StudentEvent =  {
 }[]
 // List
 
+
 export type ColumsType =({
   header: string;
   accessor: string;
@@ -112,3 +113,76 @@ export type ColumsType =({
   accessor: string;
   className: string;
 })[]
+
+export type Parent = {
+  id: number;
+  name: string;
+  email?: string;
+  students: string[];
+  phone: string;
+  address: string;
+};
+
+export type Announcement = {
+  id: number;
+  title: string;
+  class: string;
+  date: string;
+};
+
+export type Assignment = {
+  id: number;
+  subject: string;
+  class: string;
+  teacher: string;
+  dueDate: string;
+};
+
+export type Class = {
+  id: number;
+  name: string;
+  capacity: number;
+  grade: number;
+  supervisor: string;
+};
+
+export type Event = {
+  id: number;
+  title: string;
+  class: string;
+  date: string;
+  startTime: string;
+  endTime: string;
+};
+
+export type Exam = {
+  id: number;
+  subject: string;
+  class: string;
+  teacher: string;
+  date: string;
+};
+
+export type Lesson = {
+  id: number;
+  subject: string;
+  class: string;
+  teacher: string;
+};
+
+export type Result = {
+  id: number;
+  subject: string;
+  class: string;
+  teacher: string;
+  student: string;
+  type: "exam" | "assignment";
+  date: string;
+  score: number;
+};
+
+export type Subject = {
+  id: number;
+  name: string;
+  teachers: TeacherType[];
+}; 
