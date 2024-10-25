@@ -1,13 +1,14 @@
-import { ColumsType, Parent, StudentListType, TeacherType } from "@/typescript/types";
+import { Announcement, Assignment, Class, ColumsType, Exam, Lesson, Parent, Result, StudentListType, Subject, TeacherType } from "@/typescript/types";
 import React from "react";
 import RenderRow from "./RenderRow";
 
-interface TableProps {
+export interface ListTableAndTableProps {
   columns: ColumsType;
-  data: TeacherType[] | StudentListType[] | Parent[]
   type: "teacher" | "student" | "parent" | "subject" | "class" | "lesson" | "exam" | "assignment" | "result" | "attendance" | "event" | "announcement";
+  data: TeacherType[] | StudentListType[] | Parent[] | Announcement[] | Assignment[] | Class[] | Exam[] | Lesson[] | Result[] | Subject[]
 }
-export default function Table({ columns, data, type }: TableProps) {
+
+export default function Table({ columns, data, type }: ListTableAndTableProps) {
   return (
     <table className="w-full mt-4">
       <thead>
