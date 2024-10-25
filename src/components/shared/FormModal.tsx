@@ -13,23 +13,38 @@ const StudentForm = dynamic(() => import("@/components/form/StudentForm"), {
   loading: () => <h1>Loading...</h1>,
 });
 
+const ParentForm = dynamic(() => import("@/components/form/SkeletonForm"), {
+  loading: () => <h1>Loading...</h1>,
+});
+
 const forms: {
   [key: string]: (type: "create" | "update", data?: FormSchema) => JSX.Element;
-} = {teacher: (type, data) => <TeacherForm type={type} data={data} />,student: (type, data) => <StudentForm type={type} data={data} />};
+} = {
+  teacher: (type, data) => <TeacherForm type={type} data={data} />,
+  student: (type, data) => <StudentForm type={type} data={data} />,
+  parent:(type,data)=> <ParentForm type={type} data={data}/>
+};
 
 interface FormModalProps {
-  table:"teacher" | "student" | "parent" | "subject" | "class" | "lesson" | "exam" | "assignment" | "result" | "attendance" | "event" | "announcement";
+  table:
+    | "teacher"
+    | "student"
+    | "parent"
+    | "subject"
+    | "class"
+    | "lesson"
+    | "exam"
+    | "assignment"
+    | "result"
+    | "attendance"
+    | "event"
+    | "announcement";
   type: "create" | "update" | "delete";
-  data?:FormSchema;
-  id?:number
+  data?: FormSchema;
+  id?: number;
 }
 
-const FormModal = ({
-  table,
-  type,
-  data,
-  id,
-}: FormModalProps) => {
+const FormModal = ({ table, type, data, id }: FormModalProps) => {
   const size = type === "create" ? "w-8 h-8" : "w-7 h-7";
   const bgColor =
     type === "create"
@@ -64,7 +79,12 @@ const FormModal = ({
         className={`${size} flex items-center justify-center rounded-full ${bgColor}`}
         onClick={() => setOpen(true)}
       >
-        <Image src={`${type === 'create' ? "" : ""}`} alt="" width={16} height={16} />
+        <Image
+          src={`${type === "create" ? "" : ""}`}
+          alt=""
+          width={16}
+          height={16}
+        />
       </button>
       {open && (
         <div className="w-screen h-screen absolute left-0 top-0 bg-black bg-opacity-60 z-50 flex items-center justify-center">
