@@ -7,9 +7,9 @@ import InputField from "./InputField";
 import { FormSchema, schema } from "@/lib/schema";
 import { FormSKProps } from "@/typescript/interfaces";
 
-const SkeletonForm = ({ type, data }: FormSKProps) => {
+const SkeletonForm = ({ type, data, table }: FormSKProps) => {
   const {register,handleSubmit,formState: { errors },} = useForm<FormSchema>({resolver: zodResolver(schema)});
-
+  console.log(table)
   const onSubmit = handleSubmit((data) => {
     console.log(data);
   });
