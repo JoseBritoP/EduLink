@@ -43,7 +43,7 @@ export default function RenderRowParent({
                   <>
                     {/* <FormModal table="parent" type="update" data={item} />
                     <FormModal table="parent" type="delete" id={item.id} /> */}
-                    <SkeletonForm type='create' data={item}/>
+                    <SkeletonForm table="parent" type='create' data={item}/>
                   </>
                 )}
               </div>
