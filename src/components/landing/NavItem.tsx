@@ -12,7 +12,7 @@ import {
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
 import Link from "next/link";
-import { ModeToggle } from "../ui/ToggleDarkMode";
+// import { ModeToggle } from "../ui/ToggleDarkMode";
 
 type SectionsType = {
   title: string;
@@ -150,7 +150,7 @@ export function NavItem() {
                         transition-colors duration-200 ease-in-out
                         hover:text-sky-900 hover:bg-sky-200 
                         dark:hover:text-sky-400 dark:hover:bg-niceGray
-                         font-bold uppercase text-sm"
+                         font-bold uppercase text-base"
                       />
                     </ul>
                   ))}
@@ -158,7 +158,7 @@ export function NavItem() {
               )}
             </NavigationMenuItem>
           ))}
-          <ModeToggle />
+          {/* <ModeToggle /> */}
         </NavigationMenu>
         {/*  */}
 
