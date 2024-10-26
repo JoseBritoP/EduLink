@@ -1,4 +1,3 @@
-
 import type { Config } from 'tailwindcss'
 
 const config: Config = {
@@ -7,7 +6,7 @@ const config: Config = {
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
-  darkMode: ['class', 'class'],
+  darkMode: 'class',
   theme: {
   	extend: {
   		backgroundImage: {
@@ -21,6 +20,16 @@ const config: Config = {
   			lamaPurpleLight: '#F1F0FF',
   			lamaYellow: '#FAE27C',
   			lamaYellowLight: '#FEFCE8',
+				lightGray:'#e6e9ed',
+				darkGray:'#5c647b',
+				veryDarkGray:'#151c25',
+				lightBlue:'#66a1ed',
+				darkBlue:'#3c7ad8',
+				stoneGray:'#425065',
+				opacGray:'#3c434c',
+				Stronggray:'##54545c',
+				niceGray:'#485c74',
+				darkGrayV1:'##2e3245',
   			darkBlueBg: '#08112e',
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
@@ -70,6 +79,8 @@ const config: Config = {
   		}
   	}
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [
+		require("tailwindcss-animate")
+	],
 }
 export default config
