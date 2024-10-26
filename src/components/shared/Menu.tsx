@@ -22,7 +22,7 @@ export default function Menu() {
                   key={item.label}
                   className="flex items-center justify-center lg:justify-start gap-4 py-2 md:px-2 rounded-md font-semibold 
                   text-[#333] bg-[#FFF] hover:bg-gray-200/50 hover:text-[#0056b3]
-                  darkMode
+                  
                   transition-colors duration-150 ease-in-out"
                 >
                   <Image src={item.icon} alt={`${item.label + ' icon'}`} width={20} height={20} />
