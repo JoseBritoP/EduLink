@@ -22,7 +22,7 @@ const forms: {
 } = {
   teacher: (type, data) => <TeacherForm type={type} data={data} />,
   student: (type, data) => <StudentForm type={type} data={data} />,
-  parent:(type,data)=> <ParentForm type={type} data={data}/>
+  parent:(type,data)=> <ParentForm table="parent" type={type} data={data}/>
 };
 
 interface FormModalProps {
