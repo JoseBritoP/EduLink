@@ -1,8 +1,8 @@
-"use client";
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { NavItem } from "./NavItem";
+import { ModeToggle } from "../ui/ToggleDarkMode";
 
 export default function Navbar() {
   const size = 40;
@@ -22,6 +22,8 @@ export default function Navbar() {
       </div>
 
       <NavItem />
+
+      <ModeToggle />
     </nav>
   );
 }
