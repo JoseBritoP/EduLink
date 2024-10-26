@@ -1,5 +1,6 @@
 import Image from "next/image";
 import React from "react";
+import { ModeToggle } from "../ui/ToggleDarkMode";
 
 export default function Navbar() {
 
@@ -37,6 +38,7 @@ export default function Navbar() {
           height={36}
           className="rounded-full"
         />
+        <ModeToggle/>
       </nav>
     </div>
   );
