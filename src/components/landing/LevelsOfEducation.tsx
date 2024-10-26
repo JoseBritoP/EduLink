@@ -22,7 +22,7 @@ export default function LevelsOfEducation() {
   ];
   return (
     <section className="flex flex-col items-center justify-center gap-Y-5 bg-yellow-100 w-full pt-10 pb-14 border-t border-t-green-800 border-b border-b-green-800">
-      <h1 className="uppercase text-2xl md:text-4xl pb-5 font-semibold text-center">
+      <h1 className="uppercase text-2xl md:text-4xl pb-5 font-bold text-center dark:text-yellow-600">
         Levels of Education
       </h1>
       <article className="flex items-center justify-evenly gap-x-5">
